@@ -30,7 +30,7 @@ ActionMailer::Base.smtp_settings = {
   :port => 25,
   :authentication => :login,
   :user_name => "robo",
-  :password => "12senhaemail13",
+  :password => "senha",
 }
 ActionMailer::Base.default_charset = "utf-8"
 ActionMailer::Base.default_content_type = "text/html"
