@@ -1,0 +1,15 @@
+<script>
+  document.title = "BaixoGavea.com | Excluir | <%=@album.nome %>"
+</script>
+
+<table>
+  <tr>
+    <td>
+      <div style="float: left; padding-right:15px"><%= album_image(@album) %></div>
+    </td>
+    <td valign="middle" align="center">
+      <h2><%=  "Tem certeza que deseja excluir<br>#{@album.banda.nome} - #{@album.nome} (#{@album.ano.year})<br>e todos seus liames e comentários?"%></h2>
+      <br/><%= link_to "Não", "javascript:back()" %> | <%= link_to "Sim",  destroy_album_path(@album)%>
+    </td>
+  </tr>
+</table>

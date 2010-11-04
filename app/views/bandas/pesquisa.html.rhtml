@@ -1,0 +1,29 @@
+<%  if @albuns.size == 0 &&  @bandas.size == 0 %>
+  <p>Nenhum resultado.</p><br>
+<% end %>
+
+<%  if @albuns.size > 0 %>
+
+  <h2>Bandas</h2>
+  <ul>
+    <% @bandas.each do |banda| %>
+      <li>
+        <%= link_to banda.nome, banda_path(banda) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%  if @albuns.size > 0 %>
+  <h2>Álbuns</h2>
+  <ul>
+    <% @albuns.each do |album| %>
+      <li>
+        <%= link_to album.nome, album_path(banda) %>
+      </li>
+    <% end %>
+  </ul>
+<% end  %>
+
+<%= link_to "Voltar", "javascript:back()" %>
+

@@ -1,0 +1,12 @@
+class Carteiro < ActionMailer::Base
+
+  def confirme(user)
+    @subject = "[BaixoGavea.com] Confirme seu cadastro."
+    @recipients = user.email
+    @from = 'robo@baixogavea.com'
+	  @body["username"] = user.username
+	  @body["validation"] = user.gera_cod_valid
+    @sent_on = Time.now
+  end
+
+end

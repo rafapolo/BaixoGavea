@@ -1,0 +1,11 @@
+xml.instruct!
+xml.urlset "xmlns" => "http://www.sitemaps.org/schemas/sitemap/0.9" do
+  @albuns.each do |album|
+    xml.url do
+      if album && album.banda && album.banda.atalho && album.atalho
+        xml.loc "http://baixogavea.com" + album_path(album)
+        xml.lastmod album.updated_at.to_date
+      end
+    end
+  end
+end

@@ -1,0 +1,13 @@
+class CreateTs < ActiveRecord::Migration
+  def self.up
+    create_table :ts do |t|
+      t.integer :ano
+
+      t.timestamps
+    end
+  end
+
+  def self.down
+    drop_table :ts
+  end
+end

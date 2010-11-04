@@ -1,0 +1,16 @@
+Olá <%= @username %>,
+<br><br>
+Bem-Vindo ao BaixoGavea.com.
+<br><br>
+Sempre antes de inserir uma nova banda, álbum ou link verifique se já não existe e se você escreveu corretamente.
+<br><br>
+Acesse o link abaixo para confirmar seu cadastro.<br>
+http://baixogavea.com/usuario/<%= @username %>?valid=<%=@validation%>
+<br><br>
+Após a confirmação, todo link que você colaborar com a comunidade poderá ser visualizado pela sua página:<br>
+http://baixogavea.com/usuario/<%= @username %>
+<br><br>
+Colabore e compartilhe!
+<br><br>
+Saudações,<br>
+Robô Baixo Gávea

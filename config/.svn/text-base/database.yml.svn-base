@@ -1,0 +1,22 @@
+development:
+  adapter: sqlite3
+  database: db/dev_baixogavea.db
+  pool: 5
+  timeout: 5000
+
+test:
+  adapter: sqlite3
+  database: db/test_baixogavea.db
+  pool: 5
+  timeout: 5000
+
+production:
+  adapter: mysql
+  encoding: utf8
+  reconnect: false
+  database: prod_baixogavea
+  pool: 8
+  username: polo
+  password: 12polo13
+  host: db.baixogavea.com
+

@@ -1,0 +1,59 @@
+<div style="border: 1px solid gray; padding:5px; background-color:#DAAF85">
+  <p style="padding-left:6px">
+    <%= image_tag "user_msg.png", {:style=>"float:left; padding-right:8px"} %>
+    <font style="font-size:15px; font-weight:bold">Comentários</font>
+  </p>
+
+  <table cellpadding="2" cellspacing="2px" width="100%">
+    <% @votos.each do |v| %>
+      <tr bgcolor="#FFEAB7">
+        <td align="left" colspan="2" style="vertical-align:middle">
+          <div style="float:left; padding-top:3px;">
+            <%= image_tag "user_16.png", :style=>"float:left; padding: 2px 8px 2px 8px;" %>
+            <%= link_user_path(v.user) %>
+          </div>
+          <p style="float:right; padding-right:5px" class="menor">
+            <%=  time_ago v.created_at %> atrás
+          </p>
+        </td>
+      </tr>
+      <tr bgcolor="white">
+        <td valign="middle">
+          <p>
+            <%= image_tag "message.png", :style=>"float:left; padding: 0px 10px 0px 5px;" %>
+            <%= h v.comentario %>
+          </p>
+        </td>
+        <td width="25px" align="center"><%= image_voto(v.ponto) %></td>
+      </tr>
+    <%  end %>
+  </table>
+
+  <hr>
+
+  <div id="comentar" style="display:none">
+    <% form_for(@voto) do |f| %>
+      <% id = @link ? @link.id : @torrent.link.id %>
+      <%= hidden_field_tag("voto[link_id]", id) %>
+      <%= hidden_field_tag("voto[user_id]", session[:user]) %>
+      <table cellspacing="5" align="center">
+        <tr>
+          <td align="left">Comentário</td>
+          <td align="center"><%= image_tag("bom.png") %></td>
+          <td align="center"><%= image_tag("ruim.png") %></td>
+        </tr>
+        <tr align="center">
+          <td valign="top"><%= f.text_field(:comentario, {:size=>50, :maxlength=>100})  %></td>
+          <td><%=  f.radio_button(:ponto, "1")%></td>
+          <td><%=  f.radio_button(:ponto, "-1")%></td>
+        </tr>
+        <tr><td align="right"><%= f.submit("Enviar") %></td></tr>
+      </table>
+    <% end  %>
+  </div>
+
+  <p align="right">
+    <a id="butao_comentar" href="javascript:void($('butao_comentar').hide()); void(new Effect.Appear('comentar'));" class="butao">Comentar</a>
+  </p>
+
+</div>

@@ -1,0 +1,13 @@
+class Voto < ActiveRecord::Base
+  belongs_to :link
+  belongs_to :user
+
+  validates_presence_of :link, :comentario, :user, :ponto
+
+  def validate
+     if Voto.count(:conditions => "user_id = #{user.id} AND link_id = #{link.id}") >= 1
+       errors.add(:comentario, "Você já opinou nesse link")
+     end
+  end
+
+end

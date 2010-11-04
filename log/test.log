@@ -1,0 +1,57 @@
+
+Unable to load ponto, underlying cause no such file to load -- ponto 
+
+ /Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `require'
+/Library/Ruby/Gems/1.8/gems/activesupport-2.3.4/lib/active_support/dependencies.rb:158:in `require'
+/Library/Ruby/Gems/1.8/gems/activesupport-2.3.4/lib/active_support/dependencies.rb:265:in `require_or_load'
+/Library/Ruby/Gems/1.8/gems/activesupport-2.3.4/lib/active_support/dependencies.rb:224:in `depend_on'
+/Library/Ruby/Gems/1.8/gems/activesupport-2.3.4/lib/active_support/dependencies.rb:136:in `require_dependency'
+/Library/Ruby/Gems/1.8/gems/activerecord-2.3.4/lib/active_record/fixtures.rb:853:in `try_to_load_dependency'
+/Library/Ruby/Gems/1.8/gems/activerecord-2.3.4/lib/active_record/fixtures.rb:868:in `require_fixture_classes'
+/Library/Ruby/Gems/1.8/gems/activerecord-2.3.4/lib/active_record/fixtures.rb:865:in `each'
+/Library/Ruby/Gems/1.8/gems/activerecord-2.3.4/lib/active_record/fixtures.rb:865:in `require_fixture_classes'
+/Library/Ruby/Gems/1.8/gems/activerecord-2.3.4/lib/active_record/fixtures.rb:848:in `fixtures'
+/Users/rafaelpolo/Projetos/BaixoGavea/test/test_helper.rb:35
+/Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `require'
+/Users/rafaelpolo/Projetos/BaixoGavea/test/unit/application_test.rb:1
+/Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `require'
+/Applications/NetBeans/NetBeans 6.7 RC2.app/Contents/Resources/NetBeans/ruby2/nb_test_mediator.rb:95:in `require_file'
+/Applications/NetBeans/NetBeans 6.7 RC2.app/Contents/Resources/NetBeans/ruby2/nb_test_mediator.rb:111:in `add_to_suites'
+/Applications/NetBeans/NetBeans 6.7 RC2.app/Contents/Resources/NetBeans/ruby2/nb_test_mediator.rb:110:in `each'
+/Applications/NetBeans/NetBeans 6.7 RC2.app/Contents/Resources/NetBeans/ruby2/nb_test_mediator.rb:110:in `add_to_suites'
+/Applications/NetBeans/NetBeans 6.7 RC2.app/Contents/Resources/NetBeans/ruby2/nb_test_mediator.rb:67:in `parse_args'
+/Applications/NetBeans/NetBeans 6.7 RC2.app/Contents/Resources/NetBeans/ruby2/nb_test_mediator.rb:60:in `loop'
+/Applications/NetBeans/NetBeans 6.7 RC2.app/Contents/Resources/NetBeans/ruby2/nb_test_mediator.rb:60:in `parse_args'
+/Applications/NetBeans/NetBeans 6.7 RC2.app/Contents/Resources/NetBeans/ruby2/nb_test_mediator.rb:168:in `run_mediator'
+/Applications/NetBeans/NetBeans 6.7 RC2.app/Contents/Resources/NetBeans/ruby2/nb_test_mediator.rb:211
+Unable to load t, underlying cause no such file to load -- t 
+
+ /Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `require'
+/Library/Ruby/Gems/1.8/gems/activesupport-2.3.4/lib/active_support/dependencies.rb:158:in `require'
+/Library/Ruby/Gems/1.8/gems/activesupport-2.3.4/lib/active_support/dependencies.rb:265:in `require_or_load'
+/Library/Ruby/Gems/1.8/gems/activesupport-2.3.4/lib/active_support/dependencies.rb:224:in `depend_on'
+/Library/Ruby/Gems/1.8/gems/activesupport-2.3.4/lib/active_support/dependencies.rb:136:in `require_dependency'
+/Library/Ruby/Gems/1.8/gems/activerecord-2.3.4/lib/active_record/fixtures.rb:853:in `try_to_load_dependency'
+/Library/Ruby/Gems/1.8/gems/activerecord-2.3.4/lib/active_record/fixtures.rb:868:in `require_fixture_classes'
+/Library/Ruby/Gems/1.8/gems/activerecord-2.3.4/lib/active_record/fixtures.rb:865:in `each'
+/Library/Ruby/Gems/1.8/gems/activerecord-2.3.4/lib/active_record/fixtures.rb:865:in `require_fixture_classes'
+/Library/Ruby/Gems/1.8/gems/activerecord-2.3.4/lib/active_record/fixtures.rb:848:in `fixtures'
+/Users/rafaelpolo/Projetos/BaixoGavea/test/test_helper.rb:35
+/Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `require'
+/Users/rafaelpolo/Projetos/BaixoGavea/test/unit/application_test.rb:1
+/Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `require'
+/Applications/NetBeans/NetBeans 6.7 RC2.app/Contents/Resources/NetBeans/ruby2/nb_test_mediator.rb:95:in `require_file'
+/Applications/NetBeans/NetBeans 6.7 RC2.app/Contents/Resources/NetBeans/ruby2/nb_test_mediator.rb:111:in `add_to_suites'
+/Applications/NetBeans/NetBeans 6.7 RC2.app/Contents/Resources/NetBeans/ruby2/nb_test_mediator.rb:110:in `each'
+/Applications/NetBeans/NetBeans 6.7 RC2.app/Contents/Resources/NetBeans/ruby2/nb_test_mediator.rb:110:in `add_to_suites'
+/Applications/NetBeans/NetBeans 6.7 RC2.app/Contents/Resources/NetBeans/ruby2/nb_test_mediator.rb:67:in `parse_args'
+/Applications/NetBeans/NetBeans 6.7 RC2.app/Contents/Resources/NetBeans/ruby2/nb_test_mediator.rb:60:in `loop'
+/Applications/NetBeans/NetBeans 6.7 RC2.app/Contents/Resources/NetBeans/ruby2/nb_test_mediator.rb:60:in `parse_args'
+/Applications/NetBeans/NetBeans 6.7 RC2.app/Contents/Resources/NetBeans/ruby2/nb_test_mediator.rb:168:in `run_mediator'
+/Applications/NetBeans/NetBeans 6.7 RC2.app/Contents/Resources/NetBeans/ruby2/nb_test_mediator.rb:211

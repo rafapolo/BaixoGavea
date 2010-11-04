@@ -1,0 +1,7 @@
+<%= link_to 'Orkut', "http://mostre.me/orkut-baixo-gavea", {:target=>"new"} %>
+| <%= link_to 'Twitter', "http://twitter.com/baixo_gavea", {:target=>"new"} %>
+<br/><br/>
+<%= link_to 'Som Barato | Sobre', 'http://sombarato.org/sobre', {:target=>"new"} %><br>
+<br/>
+<%= link_to 'Partido Pirata do Brasil', "http://partidopirata.org/", {:target=>"new"} %><br>
+

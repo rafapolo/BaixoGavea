@@ -1,0 +1,19 @@
+<script>
+document.title = "BaixoGavea.com | Adicionar Banda"
+</script>
+
+<h1>Nova Banda ou Artista</h1>
+
+<% form_for(@banda) do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :nome %><br />
+    <%= f.text_field :nome %>
+  </p>
+  <p>
+    <%= f.submit 'Criar', {:class=>'butao'} %>
+  </p>
+<% end %>
+
+  <br>
+<%= link_to 'Voltar', bandas_path %>

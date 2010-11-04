@@ -1,0 +1,25 @@
+<script>
+document.title = "BaixoGavea.com | Editar | <%=@album.nome %>"
+</script>
+
+<div style="float: left; padding-right:15px"><%= album_image(@album) %></div>
+<h1><%=  "Editar | #{@album.banda.nome} - #{@album.nome} (#{@album.ano.year})" %></h1>
+
+<% form_for(@album, :url => { :action => "update"}) do |f| %>
+  <%= f.error_messages %>
+  <%= hidden_field_tag("album[banda_id]", @album.banda.id) %>
+  <%= hidden_field_tag("album[user_id]", session[:user]) %>
+  <p>
+    <%= f.label :nome %><br />
+    <%= f.text_field :nome %>
+    &nbsp;
+    <%= f.label :ano %>
+    <%= f.date_select :ano,  :discard_day => true, :discard_month => true, :start_year => 1950, :end_year=>Time.now.year%>
+  </p>
+  <p>
+    <%= f.submit 'Atualizar' %>
+  </p>
+<% end %>
+
+<br/><br/>
+<%= link_to "Voltar", "javascript:back()" %>

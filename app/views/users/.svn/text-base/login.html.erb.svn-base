@@ -1,0 +1,20 @@
+<h1>Autenticação</h1>
+
+<% form_for :user, :url => { :action => "login" } do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :username %><br />
+    <%= f.text_field :username %>
+  </p>
+  <p>
+    <%= f.label :senha %><br />
+    <%= f.password_field :senha %>
+  </p>
+  <p>
+    <%= f.submit 'Entrar' %>
+  </p>
+<% end %>
+<br/>
+<%= link_to 'Voltar', "javascript:back()" %> |
+<%= link_to 'Novo Usuário', "novo_usuario" %>

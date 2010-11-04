@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/baixogavea/!svn/ver/4/BaixoGavea/log
+END
+test.log
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/baixogavea/!svn/ver/4/BaixoGavea/log/test.log
+END
+development.log
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/baixogavea/!svn/ver/16/BaixoGavea/log/development.log
+END
+production.log
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/baixogavea/!svn/ver/4/BaixoGavea/log/production.log
+END
+server.log
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/baixogavea/!svn/ver/4/BaixoGavea/log/server.log
+END

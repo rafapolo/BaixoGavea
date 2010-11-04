@@ -1,0 +1,8 @@
+module AlbunsHelper
+
+
+  def albuns_path
+    "/albuns"
+  end
+
+end

@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/baixogavea/!svn/ver/4/BaixoGavea/app/controllers
+END
+votos_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/baixogavea/!svn/ver/12/BaixoGavea/app/controllers/votos_controller.rb
+END
+pesquisa_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/baixogavea/!svn/ver/8/BaixoGavea/app/controllers/pesquisa_controller.rb
+END
+stats_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/baixogavea/!svn/ver/11/BaixoGavea/app/controllers/stats_controller.rb
+END
+links_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/baixogavea/!svn/ver/17/BaixoGavea/app/controllers/links_controller.rb
+END
+users_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/baixogavea/!svn/ver/17/BaixoGavea/app/controllers/users_controller.rb
+END
+sitemap_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/baixogavea/!svn/ver/16/BaixoGavea/app/controllers/sitemap_controller.rb
+END
+application_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/baixogavea/!svn/ver/16/BaixoGavea/app/controllers/application_controller.rb
+END
+albuns_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/baixogavea/!svn/ver/17/BaixoGavea/app/controllers/albuns_controller.rb
+END
+bandas_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/baixogavea/!svn/ver/17/BaixoGavea/app/controllers/bandas_controller.rb
+END

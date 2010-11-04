@@ -1,0 +1,55 @@
+ActiveRecord::Schema.define(:version => 20090928) do
+
+  create_table "albuns",   :force => true do |t|
+    t.string   "nome",        :limit => 50, :null => false
+    t.string   "atalho",     :limit => 50, :null => false
+    t.date      "ano",          :null => false
+    t.integer  "banda_id", :limit => 6, :null => false
+    t.integer  "user_id",   :limit => 6, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+  add_index :albuns, :atalho
+
+  create_table "bandas", :force => true do |t|
+    t.string   "nome",      :limit => 35, :null => false
+    t.string   "atalho",   :limit => 35, :null => false
+    t.integer  "user_id", :limit => 6, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+  add_index :bandas, :atalho
+
+  create_table "links",      :force => true do |t|
+    t.string   "dominio",     :limit => 60, :null => false
+    t.string   "url",           :null => false
+    t.string   "comentario"
+    t.integer  "album_id",  :limit => 6, :null => false
+    t.integer  "user_id",    :limit => 6, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "votos",          :force => true do |t|
+    t.integer  "link_id",        :limit => 6, :null => false
+    t.integer   "user_id",       :limit => 6, :null => false
+    t.integer   "ponto",          :limit => 1, :null => false
+    t.string     "comentario",  :null => false
+    t.datetime "created_at"
+  end
+
+  create_table "users",         :force => true do |t|
+    t.string   "username",      :limit => 15, :null => false
+    t.string   "normalizado", :limit => 15, :null => false
+    t.string   "email",           :null => false
+    t.string   "senha",           :limit => 15, :null => false
+    t.string   "info"
+    t.integer	"confirmado",   :default=>0, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+  add_index :users, :username
+
+  User.create(:username => 'Azeredo', :info=> "Represento os usuários que desejam anonimato.", :email => "robo@baixogavea.com", :senha=>"3quinquilhões", :confirmado=>1)
+
+end

@@ -1,0 +1,73 @@
+<% letra =  params[:letra] == "9" ? "#" : params[:letra] %>
+<h1>Bandas e Artistas <%= "| #{letra.upcase}" if letra %></h1>
+
+<div id="indice">
+  <%  %w{A B C D E F G H I J K L M N O P Q R S T U V W X Y Z #}.each() do |letra| %>
+    <%=  href_menu letra %>
+  <%  end %>
+</div>
+
+<% if @bandas.size > 0 %>
+  <ul>
+    <% @bandas.each do |banda| %>
+      <li>
+        <%= link_to banda.nome, banda_path(banda) %>
+      </li>
+    <% end %>
+  </ul>  
+<% end  %>
+
+<% if @bandas.size==0 && !params[:letra] %>
+  <p>Navegue no índice geral acima.</p><br>
+  <table>
+    <tr valign="top">
+      <td width="200px"><h2>Algumas Bandas</h2></td>
+      <td width="180px"><h2>Membros Ativos</h2></td>
+      <td><h2>Últimos Links </h2></td>
+    </tr>
+    <tr>
+      <td valign="top">
+        <ul>
+          <% @ultimas_bandas.each do |ultima_banda| %>
+            <li>
+              <%= link_to ultima_banda.nome, banda_path(ultima_banda) %>
+            </li>
+          <%  end %>
+        </ul>
+      </td>
+
+      <td valign="top">
+        <ul>
+          <% @usuarios_ativos.each do |usuario| %>
+            <li>
+              <%= link_to "#{usuario.username} (#{usuario.links_count})", user_path(usuario) %>
+            </li>
+          <% end %>
+        </ul>
+      </td>
+
+      <td valign="top">
+        <ul>
+          <% @ultimos_albuns.each do |album| %>
+            <li>
+              <%= link_to album_name(album), album_path(album) %>
+            </li>
+          <% end %>
+        </ul>
+      </td>
+    </tr>
+  </table>
+
+  <br>
+<% else if @bandas.size==0 %>
+    <p style="font-size:15px"><%="Nenhuma banda com <b>#{params[:letra].upcase}</b> foi inserida ainda." %></p>
+  <% end %>
+  <br>
+<% end %>
+
+<%=  link_to 'Adicionar Banda', "/nova_banda" %>
+
+<br><br>
+<br>
+
+

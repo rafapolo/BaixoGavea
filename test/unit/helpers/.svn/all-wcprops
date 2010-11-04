@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/baixogavea/!svn/ver/4/BaixoGavea/test/unit/helpers
+END
+links_helper_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/baixogavea/!svn/ver/4/BaixoGavea/test/unit/helpers/links_helper_test.rb
+END
+users_helper_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/baixogavea/!svn/ver/4/BaixoGavea/test/unit/helpers/users_helper_test.rb
+END
+pontos_helper_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/baixogavea/!svn/ver/6/BaixoGavea/test/unit/helpers/pontos_helper_test.rb
+END
+albums_helper_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/baixogavea/!svn/ver/4/BaixoGavea/test/unit/helpers/albums_helper_test.rb
+END
+comentarios_helper_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/baixogavea/!svn/ver/6/BaixoGavea/test/unit/helpers/comentarios_helper_test.rb
+END
+t_helper_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/baixogavea/!svn/ver/14/BaixoGavea/test/unit/helpers/t_helper_test.rb
+END
+ts_helper_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/baixogavea/!svn/ver/14/BaixoGavea/test/unit/helpers/ts_helper_test.rb
+END
+bandas_helper_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/baixogavea/!svn/ver/4/BaixoGavea/test/unit/helpers/bandas_helper_test.rb
+END
+pesquisa_helper_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/baixogavea/!svn/ver/8/BaixoGavea/test/unit/helpers/pesquisa_helper_test.rb
+END
+votos_helper_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/baixogavea/!svn/ver/8/BaixoGavea/test/unit/helpers/votos_helper_test.rb
+END
+stats_helper_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/baixogavea/!svn/ver/11/BaixoGavea/test/unit/helpers/stats_helper_test.rb
+END

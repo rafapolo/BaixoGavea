@@ -1,0 +1,8 @@
+class SitemapController < ApplicationController
+  def sitemap
+    @albuns = Album.find(:all, :order => "updated_at DESC", :limit => 50000)
+    headers["Content-Type"] = "text/xml"
+    headers["Last-Modified"] = @albuns[0].updated_at.httpdate || Time.now.httpdate
+  end
+end
+

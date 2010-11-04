@@ -1,0 +1,7 @@
+
+  Event.observe(window, 'load', function() {
+      Event.observe(window, 'resize', function(){
+        var x = document.viewport.getDimensions().width;
+        cols = Math.ceil((x-720)/195)+1;
+      });
+  });

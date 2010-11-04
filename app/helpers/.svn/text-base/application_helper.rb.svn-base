@@ -1,0 +1,98 @@
+# Methods added to this helper will be available to all templates in the application.
+module ApplicationHelper
+
+  def highlight(termo, txt)
+    txt.gsub(Regexp.new("(#{termo})", Regexp::IGNORECASE) , '<b class=highligth>\1</b>')
+  end
+  alias_method(:hl, :highlight)
+
+  def image_voto(voto)
+    voto > 0 ? image_tag("bom.png") : image_tag("ruim.png")
+  end
+
+  def link_user_path(user)
+    link_to user.username, user_path(user)
+  end
+
+  def new_album_link(album)
+    "#{album.banda.atalho}/#{album.atalho}/novo_link"
+  end
+
+  def banda_path(banda)
+    "/"+banda.atalho
+  end
+
+  def user_path(user)
+    "/usuario/#{user.username}"
+  end
+
+  def editar_album_path(album)
+    "/album/editar/#{album.id}"
+  end
+
+  def excluir_album_path(album)
+    "/album/excluir/#{album.id}"
+  end
+
+    def destroy_album_path(album)
+    "/album/destroy/#{album.id}"
+  end
+
+  def albuns_path
+    "/albuns"
+  end
+
+  def pontos_link(link)
+    ponto = Voto.sum('ponto', :conditions =>["link_id = ?", link.id])
+    ponto >= 0 ? "<font color='green'>+#{ponto}</font>" : "<font color='red'>#{ponto}</font>"
+  end
+
+  def album_image(album)
+    google_image = GoogleImage.find(album)
+    image_src = google_image ? google_image.thumbnail : "no-image.jpg"
+    image_tag(image_src, :style => 'padding:3px; border:solid 1px #EEE; margin:5px; width:140px; height:140px;')
+  end
+
+  def album_name(album)
+    "#{album.banda.nome} - #{album.nome} (#{album.ano.year})"
+  end
+
+  def new_link_path(album)
+    "/#{album.banda.atalho}/#{album.atalho}/novo_link"
+  end
+
+  def new_album_path(banda)
+    "/#{banda.atalho}/novo_album"
+  end
+
+  def album_path(album)
+    "/#{album.banda.atalho}/#{album.atalho}"
+  end
+
+  def user_path(user)
+    "/usuario/#{user.username}"
+  end
+
+  def href_menu(letra)
+    txt = letra == "#" ? '9' : letra
+    "<a href='/bandas/#{txt.downcase}'>#{letra}</a>"
+  end
+
+  def edit_in_place(resource, field, options={})
+    # Get record to be edited. If resource is an array, pull it out.
+    record = resource.is_a?(Array) ? resource.last : resource
+
+    options[:id] ||= "#{dom_id(record)}_#{field}"
+    options[:tag] ||= :span
+    options[:url] ||= url_for(resource)
+    options[:rel] ||= options.delete(:url)
+    options.delete(:url) # Just in case it wasn't cleared already
+
+    classes = options[:class].split(' ') rescue []
+    classes << 'editable' if classes.empty?
+    options[:class] = classes.uniq.join(' ')
+
+    content_tag(options.delete(:tag), record.send(field), options)
+  end
+
+end

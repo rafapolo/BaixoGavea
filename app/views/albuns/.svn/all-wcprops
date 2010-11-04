@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/baixogavea/!svn/ver/4/BaixoGavea/app/views/albuns
+END
+index.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/baixogavea/!svn/ver/4/BaixoGavea/app/views/albuns/index.html.erb
+END
+new.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/baixogavea/!svn/ver/17/BaixoGavea/app/views/albuns/new.html.erb
+END
+excluir.html.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/baixogavea/!svn/ver/14/BaixoGavea/app/views/albuns/excluir.html.rhtml
+END
+show.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/baixogavea/!svn/ver/16/BaixoGavea/app/views/albuns/show.html.erb
+END
+edit.html.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/baixogavea/!svn/ver/14/BaixoGavea/app/views/albuns/edit.html.rhtml
+END

@@ -1,0 +1,38 @@
+class Link < ActiveRecord::Base
+  belongs_to :album
+  belongs_to :user
+  has_many :votos
+
+  validates_uniqueness_of :url, :message=>"já foi cadastrada"
+  validates_presence_of :url, :album, :user
+  validates_format_of :url, :message=>"deve ter o formato de uma URL", :with => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$/ix
+  before_create :pegadominio, :only => [:url]
+
+  # Diz no Twitter a criação do Link
+  def after_create
+    Tuitero.diz("#{self.user.username} adicionou um #liame para #{self.album.banda.nome} - #{self.album.nome} em http://baixogavea.com/#{self.album.banda.atalho}/#{self.album.atalho}")
+  end
+
+  # retira espaços excedentes da URL
+  def before_validation
+    self.url.strip!
+  end
+
+  # dominios mais utilizados nos links
+  def self.utilizados
+    find(
+      :all,
+      :limit=>10,
+      :group=>"dominio",
+      :select=>"dominio, COUNT(links.id) as links_count",
+      :order => 'links_count DESC'
+    )
+  end
+
+  private
+  def pegadominio
+    host = URI.parse(self.url).host
+    host.sub!("www.", "") if host.start_with?("www.")
+    self.dominio = host
+  end
+end

@@ -1,0 +1,32 @@
+<div id="fixo">
+  <h1><%=h @banda.nome %></h1>
+  <% albuns = @banda.albuns.count  %>
+  <%= link_to 'Voltar', "/" %> |
+  <%= link_to 'Adicionar Álbum', new_album_path(@banda) %>
+  <p style="font-size:12px"><%=  pluralize(albuns, "álbum", "álbuns") %></p>
+</div>
+
+<% if @banda_albuns.size > 0 %>
+<table cellspacing="15px" style="margin-left:-15px">
+    <tr>
+      <% x=1  -%>
+      <% @banda_albuns.each do |album| -%>
+      <td valign="top" width="180px" align="center">
+          <%= link_to album_image(album), album_path(album)  %><br>
+          <%= link_to "#{album.nome} (#{album.ano})", album_path(album) %>
+        </td>
+        <% if x % 4 == 0 -%>
+        </tr>
+        <tr>
+        <%  end -%>
+        <% x = x+1 -%>
+      <% end -%>
+    </tr>
+  </table>
+<% end  %>
+
+<%  if @banda_albuns.size==0 %>
+  <br>
+  <p><br>Nenhum álbum foi adicionado ainda.</p>
+  <br>
+<%  end %>

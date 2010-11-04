@@ -1,0 +1,17 @@
+development:
+  adapter: sqlite3
+  database: db/dev_baixogavea.db
+
+test:
+  adapter: sqlite3
+  database: db/test_baixogavea.db
+
+production:
+  adapter: mysql
+  encoding: utf8
+  reconnect: false
+  database: prod_baixogavea
+  pool: 8
+  username: user
+  password: senha
+  host: db.baixogavea.com

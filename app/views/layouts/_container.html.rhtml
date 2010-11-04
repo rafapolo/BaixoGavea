@@ -1,0 +1,26 @@
+<br><br><br>
+<table width="100%">
+  <tr>
+    <td valign="top" width="280px" style="border-right: 1px dashed black;">
+      <div id="menu">
+        <%= link_to(image_tag("baixogavea.jpg", :border=>0), "/") %>
+        <center>
+          <p style="width:90%">
+            O Baixo Gávea é uma inspirada embarcação de referência aos diversos coletivos 
+            que organizam e distribuem conteúdo pela Internet -
+            especialmente às comunidades de Discografias censuradas. <br>
+            Uma idéia não morre. Viva o P2P!
+          </p>
+        </center>
+        <%= render :partial => "layouts/links" %>
+      </div>
+    </td>
+
+    <td valign="top">
+      <div id="meiuca">
+        <%= yield %>
+      </div>
+    </td>
+  </tr>
+</table>
+<br><br>

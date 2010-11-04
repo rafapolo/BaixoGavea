@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/baixogavea/!svn/ver/4/BaixoGavea/config/initializers
+END
+inflections.rb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/baixogavea/!svn/ver/14/BaixoGavea/config/initializers/inflections.rb
+END
+session_store.rb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/baixogavea/!svn/ver/14/BaixoGavea/config/initializers/session_store.rb
+END
+backtrace_silencers.rb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/baixogavea/!svn/ver/4/BaixoGavea/config/initializers/backtrace_silencers.rb
+END
+new_rails_defaults.rb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/baixogavea/!svn/ver/14/BaixoGavea/config/initializers/new_rails_defaults.rb
+END
+mime_types.rb
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/baixogavea/!svn/ver/4/BaixoGavea/config/initializers/mime_types.rb
+END

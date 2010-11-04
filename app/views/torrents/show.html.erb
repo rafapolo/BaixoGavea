@@ -1,0 +1,83 @@
+<script>
+  document.title = "BaixoGavea.com | Torrent | <%=  "#{@torrent.nome}" %>"
+
+  function outrosTrackers(){
+    window.open("http://torrentz.com/announce_<%=@torrent.fixhash%>",'outros','location=no,scrollbars=yes,width=500,height=400')
+  }
+</script>
+
+<div id="torrent_menu">
+  <% @album =  @torrent.link.album %>
+  <div style="float: left; padding-right:15px"><%= album_image(@album) %></div>
+  <br><br>
+  <h2><%=  album_name(@album) %></h2>
+  <h3 style="color:gray;"><%= @torrent.nome %></h3>
+  <%= link_to 'Voltar', album_path(@album)%> |
+  <%= link_to 'Adicionar Link', new_link_path(@album)%> |
+  <%= link_to "Adicionar outro Torrent", "javascript:addTorrent()" %>
+  <p>
+    <%= render :partial => "torrents/upload_torrent" %>
+  </p>
+
+  <p style="padding-left:10px">
+    <%= image_tag "liame.png", {:style=>"padding-right:5px; float:left"} %>
+    <%= link_to "Download .torrent", "/download/#{@torrent.fixhash}", :rel=>"nofollow", :target=>"new"%>
+  </p>
+</div>
+<br>
+
+<%# arquivos %>
+<table cellpadding="3">
+  <tr><td colspan="3" style="border-bottom:1px solid gray"></td></tr>
+  <tr>
+    <th align="left"><%= image_tag "files.png", {:style=>"padding-right:5px; float:left"} %>Arquivos</th>
+    <th align="left">Tamanho</th>
+  </tr>
+  <tr><td colspan="3" style="border-bottom:1px solid gray"></td></tr>
+  <% @torrent.arquivos.each do |file| %>
+    <tr>
+      <td>
+        <%=  file.nome %>
+      </td>
+      <td align="center"><%=to_size(file.size) %></td>
+    </tr>
+  <% end  %>
+  <tr><td colspan="3" align="center" style="border-bottom:1px solid gray; border-top:1px solid gray; font-size:13px; color:gray;">
+      <%= @torrent.arquivos.size %> arquivos |
+    <%= to_size(@torrent.size) %> </td>
+  </tr>
+</table>
+<br>
+
+<%# trackers %>
+<% if @torrent.torrents_tracker.count > 0 %>
+  <table cellspacing="10">
+    <tr><td colspan="3" style="border-bottom:1px solid gray"></td></tr>
+    <tr>
+      <th align="left">
+        <%= image_tag "tracker.png", {:style=>"padding-right:5px; float:left"} %>
+        Trackers <%= link_to "(+)", "javascript:outrosTrackers()" %>
+      </th>
+      <th><%= image_tag "seed.png", {:style=>"padding-right:5px; float:left"} %>Semeadores</th>
+      <th><%= image_tag "leech.png", {:style=>"padding-right:5px; float:left"} %>Consumidores</th>
+    </tr>
+    <tr><td colspan="3" style="border-bottom:1px solid gray"></td></tr>
+    <% @torrent.torrents_tracker.each do |tt| %>
+      <tr>
+        <td><%= tt.tracker.nome  %></td>
+        <td align="center" style="color:green"><%= tt.seeds  %></td>
+        <td align="center" style="color:darkblue"><%= tt.leechs  %></td>
+      </tr>
+    <%  end %>
+    <tr><td colspan="3" align="center" style="border-bottom:1px solid gray; border-top:1px solid gray; font-size:13px; color:gray;">
+        <%= @torrent.total_seeds %> semeadores</td>
+    </tr>
+  </table>
+<% else %>
+  <p>Não há trackers ou semeadores.</p>
+<% end  %>
+<br>
+
+<div style="width:500px; padding-left:10px">
+  <%= render :partial =>"layouts/votos" %>
+</div>

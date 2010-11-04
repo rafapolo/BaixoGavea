@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/"
+                       xmlns:moz="http://www.mozilla.org/2006/browser/search/">
+  <!-- Created on Thu, 25 Mar 2010 19:50:22 GMT -->
+  <ShortName>BaixoGavea</ShortName>
+  <Description>Pesquise BaixoGavea.com</Description>
+  <Url type="text/html" method="get" template="http://baixogavea.com/pesquisa">
+    <Param name="termo" value="{searchTerms}"/>
+  </Url>
+  <Image width="16" height="16">http://baixogavea.com/images/favicon.png</Image>
+  <Developer>_Polo</Developer>
+  <InputEncoding>UTF-8</InputEncoding>
+  <Url type="application/opensearchdescription+xml" rel="self" template="http://mycroft.mozdev.org/updateos.php/id0/plugin_bg.xml"/>
+</OpenSearchDescription>

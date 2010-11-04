@@ -1,0 +1,36 @@
+class Album < ActiveRecord::Base
+  belongs_to :user
+  belongs_to :banda
+  has_many :links, :dependent => :destroy  
+
+  validates_presence_of :nome, :ano, :banda, :user
+  validates_length_of :nome, :in=>2..50, :message=>"deve ter entre 3 e 50 caracteres"
+  before_save :urlize
+
+    def validate
+     if Album.count(:conditions => ['banda_id = ? AND nome = ?', self.banda.id, self.nome]) >= 1
+       errors.add(:album, "já inserido.")
+     end
+  end
+
+    # últimos 10 albuns que tiveram links adicionados
+    def self.ultimos
+      find(
+        :all,
+        :limit=>10,
+        :joins=>:links,
+        :group=>"albuns.id",
+        :select=>"*",
+        :order => 'links.created_at DESC'
+      )
+  end
+
+  private
+  def urlize
+    self.nome.strip!
+    self.atalho = nome.urlize({:downcase=>true, :convert_spaces=>true})
+  end
+
+
+
+end

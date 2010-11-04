@@ -1,0 +1,23 @@
+<script>
+  document.title = "BaixoGavea.com | <%= "#{@link.album.banda.nome} | #{@link.album.nome}" %>"
+</script>
+
+<div style="float: left; padding-right:15px"><%= album_image(@link.album) %></div>
+<br/>
+<h1><%=  album_name(@link.album) %></h1><br/>
+<%= link_to 'Voltar', album_path(@link.album) %> |
+<%= link_to 'Adicionar outro Link', new_link_path(@link.album)%>
+<br><br>
+<br><br>
+<br><br>
+
+<%= image_tag "link.png", {:style=>"padding-top:-5px; padding-right:5px; float:left"} %>
+<h2>Link</h2>
+<p>
+  <%= link_to @link.url, @link.url, :rel=>"nofollow", :target=>"new"%>
+</p>
+<br>
+
+<div style="width:500px;">
+  <%= render :partial =>"votos" %>
+</div>

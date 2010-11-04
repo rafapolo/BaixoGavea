@@ -1,0 +1,23 @@
+<p>
+  <b>Nome:</b>
+  <%=h @arquivo.nome %>
+</p>
+
+<p>
+  <b>Pasta:</b>
+  <%=h @arquivo.pasta %>
+</p>
+
+<p>
+  <b>Tamanho:</b>
+  <%=h @arquivo.tamanho %>
+</p>
+
+<p>
+  <b>Torrent:</b>
+  <%=h @arquivo.torrent_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_arquivo_path(@arquivo) %> |
+<%= link_to 'Back', arquivos_path %>

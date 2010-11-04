@@ -1,0 +1,30 @@
+<h1>Resultado da Procura | <%=@pesquisa%></h1>
+<%  if @albuns.size == 0 &&  @bandas.size == 0 %>
+  <p>Nenhum resultado.</p><br>
+<% end %>
+<br/>
+<%  if @bandas.size > 0 %>
+  <h2>Bandas <%= "(#{@bandas.count})" %></h2>
+  <ul>
+    <% @bandas.each do |banda| %>
+      <li>
+      <%= link_to(hl(@pesquisa, banda.nome), banda_path(banda)) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%  if @albuns.size > 0 %>
+  <h2>Álbuns <%= "(#{@albuns.count})" %></h2>
+  <ul>
+    <% @albuns.each do |album| %>
+      <li>
+      <%= link_to(hl(@pesquisa, album_name(album)), album_path(album)) %>
+      </li>
+    <% end %>
+  </ul>
+ <br/>
+<% end  %>
+
+<%= link_to "Voltar", "javascript:back()" %>
+

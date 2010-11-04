@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  dominio: MyString
+  url: MyString
+  pontos_up: 1
+  pontos_down: 1
+  clicks: 1
+
+two:
+  dominio: MyString
+  url: MyString
+  pontos_up: 1
+  pontos_down: 1
+  clicks: 1

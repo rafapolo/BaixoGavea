@@ -1,0 +1,76 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-br" lang="pt-br">
+    <head>
+        <title>ChangeLog do BaixoGavea.com | atual v0.4</title>
+        <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+        <meta name="description" content="Changelog"/>
+    </head>
+
+    <body>
+        <pre>
+== ChangeLog ==
+
+v0.1 
+18/Set/09
+
+- Insere Bandas.
+- Insere Álbuns e mostra capa pelo primeiro resultado do Google Imagens.
+- Insere Links.
+- Faz votação de link, bom ou ruim com comentário.
+- Autenticação de Usuários
+- Página do usuário
+
+============
+
+v0.2
+20/Set/09
+
+- Novo: Faz pesquisa por nome de álbum e banda.
+- Novo: Na urlização dos álbuns e bandas, troca "&" por "e".
+- Novo: Exibe usuários mais ativos (+links).
+- Novo: Exibe últimos álbuns que tiveram links adicionados.
+- Novo: Exibe domínios hospedeiros mais usados.
+- Fixed: Botão de voltar no álbum leva a banda.
+- Fixed: Exibe URL do link, ao invés apenas do domínio.
+- Fixed: Soma da pontuação de votos no link.
+
+============
+
+v0.3
+22/Set/09
+
+- Novo: Envia para o twitter @baixo_gavea novos links adicionados.
+- Novo: Exibe número de usuários, álbuns e bandas no rodapé.
+- Novo: Exibe quantidade de links adicionados pelos top usuários.
+- Novo: Exibe bandas com últimos álbuns.
+- Removed: Não exibe mais hospedeiros. => /stats
+- Fixed: Layout refinado para monitor com resoluções pequenas.
+- Fixed: Layout de link sem voto pede opinião.
+
+============
+
+v 0.4
+28/Set/09
+
+- Novo: Usuário pode editar sua info.
+- Novo: Usuário pode deletar e editar seus álbuns adicionados.
+- Fixed: Título da página agora exibe nome da banda e álbum.
+- Fixed: Banda pode ter nomes entre 3 e 35 caracteres.
+- Fixed: Álbum pode ter nomes entre 2 e 50 caracteres.
+- Fixed: A senha deve ter entre 6 e 15 caracteres.
+- Fixed: Retira espaços excedentes do link inserido.
+- Fixed: Código de validação por email refinado.
+- Fixed: Mensagem de senha incorreta no login.
+- Fixed: Mensagem de validação/ativação do cadastro.
+- Fixed: Mensagem ao abrir a URL de uma banda ou álbum inexistente.
+- Fixed: Não pode ter username repetido independente de maiúscula ou minúscula.
+- Fixed: Pesquisa retorna independente de maiúscula ou minúscula do termo.
+- Fixed: Imagens do álbum tem 140x140px e busca no Google Imagens pt-br.
+- Fixed: Ao criar uma banda somos redirecionados para adicionar o álbum.
+- Fixed: Ao criar um álbum somos redirecionados para adicionar o link.
+
+============
+
+
+        </pre>
+    </body>
+</html>
