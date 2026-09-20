@@ -1,97 +1,106 @@
-ActiveRecord::Schema.define(:version => 20091209) do
+# This file is auto-generated from the current state of the database. Instead
+# of editing this file, please use the migrations feature of Active Record to
+# incrementally modify your database, and then regenerate this schema definition.
+#
+# This file is the source Rails uses to define your schema when running `bin/rails
+# db:schema:load`. When creating a new database, `bin/rails db:schema:load` tends to
+# be faster and is potentially less error prone than running all of your
+# migrations from scratch. Old migrations may fail to apply correctly if those
+# migrations use external dependencies or application code.
+#
+# It's strongly recommended that you check this file into your version control system.
 
-  create_table "albuns",   :force => true do |t|
-    t.string   "nome",        :limit => 55, :null => false
-    t.string   "atalho",     :limit => 55, :null => false
-    t.string   "image_url", :null => false
-    t.integer   "ano",          :null => false
-    t.integer  "banda_id", :limit => 6, :null => false
-    t.integer  "user_id",   :limit => 6, :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-  add_index :albuns, :atalho
-
-  create_table "bandas", :force => true do |t|
-    t.string   "nome",      :limit => 55, :null => false
-    t.string   "atalho",   :limit => 55, :null => false
-    t.integer  "user_id", :limit => 6, :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-  add_index :bandas, :atalho
-  #...
-  
-  create_table "links",      :force => true do |t|
-    t.string   "url",           :null => false
-    t.belongs_to  "album",  :limit => 6, :null => false
-    t.integer  "user_id",    :limit => 6, :null => false
-    t.belongs_to  "tracker"
-    t.belongs_to  "torrent"
-    t.boolean "is_torrent", :default=>false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+ActiveRecord::Schema[8.1].define(version: 2026_09_20_160826) do
+  create_table "albums", force: :cascade do |t|
+    t.integer "ano"
+    t.string "atalho"
+    t.integer "banda_id", null: false
+    t.datetime "created_at", null: false
+    t.string "image_url"
+    t.string "nome"
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["banda_id"], name: "index_albums_on_banda_id"
+    t.index ["user_id"], name: "index_albums_on_user_id"
   end
 
-  create_table "votos",          :force => true do |t|
-    t.integer  "link_id",        :limit => 6, :null => false
-    t.integer   "user_id",       :limit => 6, :null => false
-    t.integer   "ponto",          :limit => 1, :null => false
-    t.string     "comentario",  :null => false
-    t.datetime "created_at"
+  create_table "bandas", force: :cascade do |t|
+    t.string "atalho"
+    t.datetime "created_at", null: false
+    t.string "nome"
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["atalho"], name: "index_bandas_on_atalho", unique: true
+    t.index ["nome"], name: "index_bandas_on_nome", unique: true
+    t.index ["user_id"], name: "index_bandas_on_user_id"
   end
 
-  create_table "users",         :force => true do |t|
-    t.string   "username",      :limit => 15, :null => false
-    t.string   "normalizado", :limit => 15, :null => false
-    t.string   "email",           :null => false
-    t.string   "senha",           :limit => 15, :null => false
-    t.string   "info"
-    t.integer	"confirmado",   :default=>0, :null => false        
+  create_table "links", force: :cascade do |t|
+    t.integer "album_id", null: false
+    t.datetime "created_at", null: false
+    t.boolean "is_torrent"
+    t.integer "torrent_id"
+    t.integer "tracker_id"
+    t.datetime "updated_at", null: false
+    t.string "url"
+    t.integer "user_id", null: false
+    t.index ["album_id"], name: "index_links_on_album_id"
+    t.index ["torrent_id"], name: "index_links_on_torrent_id"
+    t.index ["tracker_id"], name: "index_links_on_tracker_id"
+    t.index ["user_id"], name: "index_links_on_user_id"
+  end
+
+  create_table "torrents", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "fixhash"
+    t.string "nome"
+    t.integer "size"
+    t.datetime "updated_at", null: false
+    t.index ["fixhash"], name: "index_torrents_on_fixhash", unique: true
+  end
+
+  create_table "trackers", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.boolean "is_torrent"
+    t.string "nome"
+    t.datetime "updated_at", null: false
+    t.string "url"
+    t.index ["url"], name: "index_trackers_on_url", unique: true
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.boolean "confirmado"
+    t.datetime "created_at", null: false
+    t.string "email"
+    t.text "info"
     t.datetime "lastlogin_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-  add_index :users, :username
-
-  create_table "torrents", :force => true do |t|
-    t.string   "nome",          :limit => 60, :null => false
-    t.string   "fixhash",     :limit => 40, :null => false
-    t.integer "size",          :null => false
-    t.datetime "created_at"
-  end
-  add_index :torrents, :fixhash
-
-  create_table "trackers", :force => true do |t|
-    t.string   "nome",     :limit => 80, :null => false
-    t.string   "url",       :null => false
-    t.boolean "is_torrent", :default=>false
-    t.datetime "created_at"
-  end
-  add_index :trackers, :url
-
-#  create_table "pieces", :force => true do |t|
-#    t.integer "torrent_id",  :null => false
-#    t.text :pieces, :null => false
-#    t.integer :length, :null => false
-#  end
-
-  create_table "arquivos", :force => true do |t|
-    t.integer "torrent_id", :null => false
-    t.string   "nome",      :null => false
-    t.string   "pasta"
-    t.integer "size", :null => false
+    t.string "normalizado"
+    t.string "password_digest"
+    t.datetime "updated_at", null: false
+    t.string "username"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["normalizado"], name: "index_users_on_normalizado", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
-  create_table "torrents_trackers", :force => true do |t|
-    t.integer "torrent_id", :null => false
-    t.integer "tracker_id", :null => false
-    t.integer   "seeds",     :limit => 6, :null => false
-    t.integer   "leechs",     :limit => 6, :null => false
-    t.datetime "updated_at"
-    t.datetime "created_at"
+  create_table "votos", force: :cascade do |t|
+    t.text "comentario"
+    t.datetime "created_at", null: false
+    t.integer "link_id", null: false
+    t.integer "ponto"
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["link_id"], name: "index_votos_on_link_id"
+    t.index ["user_id"], name: "index_votos_on_user_id"
   end
 
-  User.create(:username => 'polo', :info=> "aways over here", :email => "polo@mostre.me", :senha=>"polopolo", :confirmado=>1)
-
+  add_foreign_key "albums", "bandas"
+  add_foreign_key "albums", "users"
+  add_foreign_key "bandas", "users"
+  add_foreign_key "links", "albums"
+  add_foreign_key "links", "torrents"
+  add_foreign_key "links", "trackers"
+  add_foreign_key "links", "users"
+  add_foreign_key "votos", "links"
+  add_foreign_key "votos", "users"
 end

@@ -1,22 +1,32 @@
-<script>
-  document.title = "BaixoGavea.com | <%= "#{@link.album.banda.nome} | #{@link.album.nome}" %>"
-</script>
+<% content_for :title, @link.url %>
 
-<div style="float: left; padding-right:15px"><%= album_image(@link.album) %></div>
-<br/>
-<h2><%=  album_name(@link.album) %></h2><br/>
-<%= link_to 'Voltar', album_path(@link.album) %> |
-<%= link_to 'Adicionar outro Link', new_link_path(@link.album)%>
-<br><br>
-<br><br>
-<br>
+<h1><%= link_to @link.url, @link.url %></h1>
 
-<p style="padding-left:10px">
-<%= image_tag "liame.png", {:style=>"padding-right:5px; float:left"} %>
- <%= link_to "Download de #{@link.tracker.nome}", @link.url, {:rel=>"nofollow", :target=>"_blank"}%>
-</p>
-<br>
+<p>Adicionado por <%= link_to @link.user.username, usuario_path(@link.user.username) %></p>
 
-<div style="width:500px; padding-left:10px">
-  <%= render :partial =>"layouts/votos" %>
-</div>
+<h2>Comentários</h2>
+<ul>
+  <% @votos.each do |voto| %>
+    <li>
+      <%= voto.ponto == 1 ? "👍" : "👎" %>
+      <%= voto.user.username %>: <%= voto.comentario %>
+    </li>
+  <% end %>
+</ul>
+
+<% if logged_in? %>
+  <%= form_with model: @voto, url: votos_path do |f| %>
+    <%= f.hidden_field :link_id, value: @link.id %>
+    <p>
+      <%= f.label :comentario %>
+      <%= f.text_field :comentario %>
+    </p>
+    <p>
+      <label><%= f.radio_button :ponto, 1 %> Funciona</label>
+      <label><%= f.radio_button :ponto, -1 %> Quebrado</label>
+    </p>
+    <%= f.submit "Comentar" %>
+  <% end %>
+<% else %>
+  <p><%= link_to "Entre para comentar", login_path %></p>
+<% end %>

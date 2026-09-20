@@ -1,0 +1,16 @@
+<% content_for :title, @user.username %>
+
+<h1><%= @user.username %></h1>
+
+<p><%= @user.info %></p>
+
+<p>
+  <%= @bandas_count %> bandas, <%= @albuns_count %> álbuns, <%= @links_count %> links adicionados.
+</p>
+
+<h2>Álbuns adicionados</h2>
+<ul>
+  <% @user_albuns.each do |album| %>
+    <li><%= link_to "#{album.banda.nome} - #{album.nome}", album_path(banda: album.banda.atalho, album: album.atalho) %></li>
+  <% end %>
+</ul>

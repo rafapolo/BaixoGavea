@@ -1,28 +1,29 @@
-class Banda < ActiveRecord::Base
+class Banda < ApplicationRecord
   belongs_to :user
-  has_many :albuns, :dependent => :destroy  
+  has_many :albums, dependent: :destroy
 
-  validates_uniqueness_of :atalho, :nome, :message=>"já foi inserido"
-  validates_presence_of :nome, :user
-  validates_length_of :nome, :in=>2..55, :message=>"deve ter entre 2 e 55 caracteres"
-  before_create :urlize
+  validates :nome, presence: true, uniqueness: true, length: { in: 2..55 }
+  validates :atalho, presence: true, uniqueness: true
 
-  def self.find_by_letra(letter)
-    if letter=="9"
-      find(:all, :conditions => ['nome LIKE ? OR nome LIKE ? OR nome LIKE ? OR nome LIKE ? OR nome LIKE ? OR nome LIKE ? OR nome LIKE ? OR nome LIKE ? OR nome LIKE ? OR nome LIKE ?', "#{0}%", "#{1}%", "#{2}%", "#{3}%", "#{4}%", "#{5}%", "#{6}%", "#{7}%", "#{8}%", "#{9}%"], :order => 'nome ASC')
+  before_validation :gerar_atalho
+
+  def self.find_by_letra(letra)
+    if letra == "9"
+      where("nome GLOB ?", "[0-9]*").order(:nome)
     else
-      find(:all, :conditions => ['nome LIKE ?', "#{letter}%"], :order => 'nome ASC')
+      where("nome LIKE ?", "#{letra}%").order(:nome)
     end
   end
 
-  private
-  def urlize
-    self.nome.strip!
-    self.atalho = nome.urlize({:downcase=>true, :convert_spaces=>true})
+  def self.algumas(limit: 10)
+    order(Arel.sql("RANDOM()")).limit(limit)
   end
 
-    # algumas
-    def self.algumas
-        Banda.find :all, :offset => (Banda.count * rand ).to_i ,:limit=>10
+  private
+
+  def gerar_atalho
+    return if nome.blank?
+    self.nome = nome.strip
+    self.atalho = nome.parameterize
   end
 end

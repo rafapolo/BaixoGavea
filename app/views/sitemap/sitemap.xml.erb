@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <% @albuns.each do |album| %>
+  <url>
+    <loc><%= album_url(banda: album.banda.atalho, album: album.atalho) %></loc>
+    <lastmod><%= album.updated_at.iso8601 %></lastmod>
+  </url>
+  <% end %>
+</urlset>

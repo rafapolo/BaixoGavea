@@ -1,0 +1,9 @@
+<% content_for :title, "Votos" %>
+
+<h1>Votos</h1>
+
+<ul>
+  <% @votos.each do |voto| %>
+    <li><%= link_to voto.comentario, voto_path(voto) %></li>
+  <% end %>
+</ul>

@@ -1,7 +1,0 @@
-module BandasHelper
-  def banda_path(banda)
-    "/"+banda.atalho
-  end
-
-
-end

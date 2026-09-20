@@ -1,21 +1,15 @@
 class PesquisaController < ApplicationController
-
   def pesquisa
-    pesquisa = params[:termo]
-    if pesquisa && pesquisa!=""
-      @pesquisa = pesquisa
-      @bandas = Banda.find(:all, :conditions => ['nome LIKE ? ', "%#{@pesquisa}%"], :order => 'nome ASC')
-      @albuns = Album.find(:all, :conditions => ['nome LIKE ? ', "%#{@pesquisa}%"], :order => 'nome ASC')
+    termo = params.dig(:pesquisar, :txt)
+
+    if termo.present?
+      @pesquisa = termo
+      @bandas = Banda.where("nome LIKE ?", "%#{termo}%").order(:nome)
+      @albuns = Album.where("nome LIKE ?", "%#{termo}%").order(:nome)
     else
-      flash[:notice] = "Pesquisa não pode ser vazia."
-      @bandas = []
-      @albuns = []      
+      flash.now[:notice] = "Pesquisa não pode ser vazia."
+      @bandas = Banda.none
+      @albuns = Album.none
     end
-
-    respond_to do |format|
-      format.html
-    end
-
   end
-
 end

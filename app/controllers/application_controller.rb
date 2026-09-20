@@ -1,15 +1,27 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery
-  layout "geral", :except => [:stats, :sitemap]
-  
-  before_filter :login, :only=>[:new, :upload]
-  
-  def login    
-    return true if session[:user] && session[:logged] && session[:username]
-    session[:href] = request.referer
-    flash[:notice] = "Você precisa se autenticar."
-    redirect_to("/login")
+  # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
+  allow_browser versions: :modern
+
+  # Changes to the importmap will invalidate the etag for HTML responses
+  stale_when_importmap_changes
+
+  helper_method :current_user, :logged_in?
+
+  private
+
+  def current_user
+    @current_user ||= User.find_by(id: session[:user_id])
   end
 
-  filter_parameter_logging :senha
+  def logged_in?
+    current_user.present?
+  end
+
+  def require_login
+    return true if logged_in?
+
+    session[:href] = request.referer
+    flash[:notice] = "Você precisa se autenticar."
+    redirect_to login_path
+  end
 end

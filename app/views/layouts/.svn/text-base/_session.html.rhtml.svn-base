@@ -1,6 +1,0 @@
-<% if session[:user]  %>
-  <%  user = User.find(session[:user]) %>
-  <b>Usuário <%= link_to user.username, user_path(user) %></b>
-<% else  %>
-  <%= link_to "Login", "/login" %>
-<% end  %>

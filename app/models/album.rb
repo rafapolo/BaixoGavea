@@ -1,45 +1,26 @@
-class Album < ActiveRecord::Base
-  belongs_to :user
+class Album < ApplicationRecord
   belongs_to :banda
-  has_many :links, :dependent => :destroy , :order=>"is_torrent DESC"
+  belongs_to :user
+  has_many :links, -> { order(is_torrent: :desc) }, dependent: :destroy
 
-  validates_presence_of :nome, :ano, :banda, :user
-  validates_length_of :nome, :in=>2..55, :message=>"deve ter entre 2 e 55 caracteres"
-  before_create :um_nome_album_por_banda_create
-  before_update :um_nome_album_por_banda_update
+  validates :nome, presence: true, length: { in: 2..55 }
+  validates :ano, presence: true
+  validates :nome, uniqueness: { scope: :banda_id, message: "já inserido para essa banda" }
 
-  def before_save
-    self.nome.strip!
-    self.atalho = nome.urlize({:downcase=>true, :convert_spaces=>true})
-    self.image_url = GoogleImage.find(self) if !self.image_url
+  before_validation :gerar_atalho
+
+  def self.ultimos(limit: 10)
+    joins(:links)
+      .group("albums.id")
+      .order(Arel.sql("MAX(links.created_at) DESC"))
+      .limit(limit)
   end
 
-  def um_nome_album_por_banda_update
-    atalho = self.nome.urlize({:downcase=>true, :convert_spaces=>true})
-    igual = Album.find(:all, :conditions => ['banda_id = ? AND atalho = ?', self.banda.id, atalho])    
-    if igual.size > 0 && igual.first.id  != self.id
-      errors.add(:album, "já inserido.")
-    end
-    errors.empty?
-  end
+  private
 
-  def um_nome_album_por_banda_create
-    if Album.count(:conditions => ['banda_id = ? AND atalho = ?', self.banda.id, self.atalho]) > 0
-      errors.add(:album, "já inserido.")
-    end
-    errors.empty?
+  def gerar_atalho
+    return if nome.blank?
+    self.nome = nome.strip
+    self.atalho = nome.parameterize
   end
-
-  # últimos 10 albuns que tiveram links adicionados
-  def self.ultimos
-    find(
-      :all,
-      :limit=>10,
-      :joins=>:links,
-      :group=>"albuns.id",
-      :select=>"*",
-      :order => 'links.created_at DESC'
-    )
-  end
-
 end

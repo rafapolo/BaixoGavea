@@ -1,0 +1,9 @@
+<% content_for :title, "Torrents" %>
+
+<h1>Torrents</h1>
+
+<ul>
+  <% @torrents.each do |torrent| %>
+    <li><%= link_to torrent.nome, torrent_path(torrent.fixhash) %></li>
+  <% end %>
+</ul>

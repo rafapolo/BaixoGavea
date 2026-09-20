@@ -1,0 +1,25 @@
+<% content_for :title, "Novo álbum" %>
+
+<h1>Novo álbum para <%= @banda.nome %></h1>
+
+<%= form_with model: @album, url: criar_album_path(banda: @banda.atalho) do |f| %>
+  <% if @album.errors.any? %>
+    <ul class="errors">
+      <% @album.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <p>
+    <%= f.label :nome %>
+    <%= f.text_field :nome %>
+  </p>
+
+  <p>
+    <%= f.label :ano %>
+    <%= f.number_field :ano %>
+  </p>
+
+  <%= f.submit "Adicionar" %>
+<% end %>

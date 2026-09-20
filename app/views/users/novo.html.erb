@@ -1,27 +1,35 @@
-<h1>Novo usuário</h1>
+<% content_for :title, "Cadastrar" %>
 
-<% form_for :user, :url => { :action => "create" } do |f| %>
-  <%= f.error_messages %>
+<h1>Cadastrar</h1>
+
+<%= form_with model: @user, url: usuarios_path do |f| %>
+  <% if @user.errors.any? %>
+    <ul class="errors">
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
 
   <p>
-    <%= f.label :username %> (login)<br />
+    <%= f.label :username %>
     <%= f.text_field :username %>
   </p>
   <p>
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
   </p>
   <p>
-    <%= f.label :senha %><br />
-    <%= f.password_field :senha %>
+    <%= f.label :info, "Sobre você" %>
+    <%= f.text_area :info %>
   </p>
   <p>
-    <%= f.label :info %> (frase do perfil)<br />
-    <%= f.text_field :info %>
+    <%= f.label :password, "Senha" %>
+    <%= f.password_field :password %>
   </p>
   <p>
-    <%= f.submit 'Criar' %>
+    <%= f.label :password_confirmation, "Confirme a senha" %>
+    <%= f.password_field :password_confirmation %>
   </p>
+  <%= f.submit "Cadastrar" %>
 <% end %>
-
-<%= link_to 'Voltar', "javascript:back()" %>

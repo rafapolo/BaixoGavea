@@ -1,20 +1,15 @@
-<h1>Autenticação</h1>
+<% content_for :title, "Entrar" %>
 
-<% form_for :user, :url => { :action => "login" } do |f| %>
-  <%= f.error_messages %>
+<h1>Entrar</h1>
 
+<%= form_with url: login_path, method: :post, scope: :user do |f| %>
   <p>
-    <%= f.label :username %><br />
+    <%= f.label :username %>
     <%= f.text_field :username %>
   </p>
   <p>
-    <%= f.label :senha %><br />
-    <%= f.password_field :senha %>
+    <%= f.label :password, "Senha" %>
+    <%= f.password_field :password %>
   </p>
-  <p>
-    <%= f.submit 'Entrar' %>
-  </p>
+  <%= f.submit "Entrar" %>
 <% end %>
-<br/>
-<%= link_to 'Voltar', "javascript:back()" %> |
-<%= link_to 'Novo Usuário', "novo_usuario" %>

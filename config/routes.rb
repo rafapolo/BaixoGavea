@@ -1,41 +1,34 @@
-ActionController::Routing::Routes.draw do |map|  
-  map.root :controller => "bandas", :action=>"index"
-  map.resources :links
-  map.resources :torrents
+Rails.application.routes.draw do
+  get "up" => "rails/health#show", as: :rails_health_check
 
-  map.connect "login",  :controller => "users", :action=>"login"
-  map.connect "logout",  :controller => "users", :action=>"logout"
-  map.connect "stats.json", :controller => "stats", :action=>"stats"
-  map.connect "novo_usuario",  :controller => "users", :action=>"novo"
-  map.connect "pesquisa",  :controller => "pesquisa", :action=>"pesquisa"
+  root "bandas#index"
 
-  map.connect 'bandas/:letra',  :controller => "bandas", :action=>"index", :requirements => { :letra => /\w/ }
-  map.connect 'nova_banda', :controller => "bandas", :action=>"new"
-  map.connect 'usuario/:user', :controller => "users", :action=>"show"
-  map.connect 'user/update/:id', :controller => "users", :action=>"update_status"
+  get "login" => "users#login", as: :login
+  post "login" => "users#authenticate", as: :authenticate
+  delete "logout" => "users#logout", as: :logout
 
-  map.resources :votos
-  map.resources :users
-  map.resources :bandas
-  map.resources :albuns
-  map.resources :votos
+  get "novo_usuario" => "users#novo", as: :novo_usuario
+  post "usuarios" => "users#create", as: :usuarios
+  get "usuario/:user" => "users#show", as: :usuario
 
-  map.connect 'torrents/upload', :controller=>"torrents", :action=>"upload"
-  map.connect 'torrent/:fixhash', :controller => 'torrents', :action => 'show', :requirements => { :fixhash => /\w{40}/ }
-  map.connect 'download/:fixhash', :controller => 'torrents', :action => 'download', :requirements => { :fixhash => /\w{40}/ }
+  get "pesquisa" => "pesquisa#pesquisa", as: :pesquisa
+  get "stats.json" => "stats#show", as: :stats
+  get "sitexml" => "sitemap#sitemap", as: :sitemap
 
-  map.connect ':banda', :controller => "bandas", :action=>"show"
-  map.connect ':banda/novo_album', :controller => "albuns", :action=>"new"
-  map.connect ':banda/:album', :controller => "albuns", :action=>"show"
-  map.connect ':banda/:album/novo_link', :controller => "links", :action=>"new"
-  
-  map.connect 'album/editar/:id', :controller => "albuns", :action=>"edit"
-  map.connect 'album/excluir/:id', :controller => "albuns", :action=>"excluir"
-  map.connect 'album/destroy/:id', :controller => "albuns", :action=>"destroy"
+  get "bandas/:letra" => "bandas#index", as: :bandas_por_letra, constraints: { letra: /\w/ }
+  get "nova_banda" => "bandas#new", as: :nova_banda
+  post "bandas" => "bandas#create", as: :bandas
 
-  map.connect 'sitemap.xml', :controller => "sitemap", :action => "sitemap"
-  map.connect 'bg_search_plugin.xml', :controller=> "fake", :path=>"/bg_search_plugin.xml"
+  resources :votos, only: [:index, :show, :create]
+  resources :links, only: [:show, :new, :create]
 
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
+  get "torrents" => "torrents#index", as: :torrents
+  get "torrent/:fixhash" => "torrents#show", as: :torrent, constraints: { fixhash: /\w{40}/ }
+  get "download/:fixhash" => "torrents#download", as: :download_torrent, constraints: { fixhash: /\w{40}/ }
+
+  get ":banda/novo_album" => "albums#new", as: :novo_album
+  post ":banda/albuns" => "albums#create", as: :criar_album
+  get ":banda/:album/novo_link" => "links#new", as: :novo_link
+  get ":banda/:album" => "albums#show", as: :album
+  get ":banda" => "bandas#show", as: :banda
 end

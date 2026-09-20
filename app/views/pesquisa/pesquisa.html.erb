@@ -1,0 +1,24 @@
+<% content_for :title, "Pesquisa" %>
+
+<h1>Pesquisa</h1>
+
+<%= form_with url: pesquisa_path, method: :get, scope: :pesquisar do |f| %>
+  <%= f.text_field :txt, value: @pesquisa %>
+  <%= f.submit "Pesquisar" %>
+<% end %>
+
+<% if @pesquisa %>
+  <h2>Bandas</h2>
+  <ul>
+    <% @bandas.each do |banda| %>
+      <li><%= link_to banda.nome, banda_path(banda.atalho) %></li>
+    <% end %>
+  </ul>
+
+  <h2>Álbuns</h2>
+  <ul>
+    <% @albuns.each do |album| %>
+      <li><%= link_to "#{album.banda.nome} - #{album.nome}", album_path(banda: album.banda.atalho, album: album.atalho) %></li>
+    <% end %>
+  </ul>
+<% end %>

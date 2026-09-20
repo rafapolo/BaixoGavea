@@ -1,0 +1,11 @@
+<% content_for :title, "#{@banda.nome} | #{@album.nome}" %>
+
+<h1><%= @banda.nome %> - <%= @album.nome %> (<%= @album.ano %>)</h1>
+
+<ul>
+  <% @album.links.each do |link| %>
+    <li><%= link_to link.url, link_path(link) %></li>
+  <% end %>
+</ul>
+
+<%= link_to "Adicionar link", novo_link_path(banda: @banda.atalho, album: @album.atalho) %>

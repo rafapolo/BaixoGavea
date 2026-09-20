@@ -1,19 +1,20 @@
-<script>
-document.title = "BaixoGavea.com | Adicionar Banda"
-</script>
+<% content_for :title, "Nova banda" %>
 
-<h1>Nova Banda ou Artista</h1>
+<h1>Nova banda</h1>
 
-<% form_for(@banda) do |f| %>
-  <%= f.error_messages %>
+<%= form_with model: @banda, url: bandas_path do |f| %>
+  <% if @banda.errors.any? %>
+    <ul class="errors">
+      <% @banda.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
   <p>
-    <%= f.label :nome %><br />
+    <%= f.label :nome %>
     <%= f.text_field :nome %>
   </p>
-  <p>
-    <%= f.submit 'Criar', {:class=>'butao'} %>
-  </p>
-<% end %>
 
-  <br>
-<%= link_to 'Voltar', bandas_path %>
+  <%= f.submit "Adicionar" %>
+<% end %>
